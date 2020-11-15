@@ -21,6 +21,8 @@ export class ProductComponent extends BaseComponent implements OnInit {
   public doneSetupForm: any;
   public showUpdateModal:any;
   public isCreate:any;
+  menus: any;
+  menus1:any;
   submitted = false;
   @ViewChild(FileUpload, { static: false }) file_image: FileUpload;
   constructor(private fb: FormBuilder, injector: Injector) {
@@ -31,6 +33,13 @@ export class ProductComponent extends BaseComponent implements OnInit {
     this.formsearch = this.fb.group({
       'product_name': [''],
       'product_price': [''],
+    });
+
+    this._api.get('/api/category/get-category').takeUntil(this.unsubscribe).subscribe(res => {
+      this.menus = res;
+    });
+    this._api.get('/api/brand/get-brand').takeUntil(this.unsubscribe).subscribe(res => {
+      this.menus1 = res;
     });
 
    this.search();
