@@ -171,7 +171,7 @@ export class ProductComponent extends BaseComponent implements OnInit {
         this.product = res;
 
           this.formdata = this.fb.group({
-            'product_name': [this.product.product_name,Validators.required],
+      'product_name': [this.product.product_name,Validators.required],
       'product_content': [this.product.product_content,Validators.required],
       'product_status': [this.product.product_status,Validators.required],
       'category_id': [this.product.category_id,Validators.required],
